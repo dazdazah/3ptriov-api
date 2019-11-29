@@ -9,8 +9,20 @@ const cors = require("cors");
 app.use(cors({ credentials: true }));
 
 require("dotenv").config();
-// require("./database");
+require("./database");
+
+// added multer
+const multer = require("multer");
+const upload = multer({ storage: multer.memoryStorage() });
+
+// GET SECTION
+app.get("/users", require("./controllers/getUser"));
+
+// POST SECTION
+app.post("/signup", upload.single("file"), require("./controllers/Signup"));
 
 app.listen(process.env.PORT, () => {
   console.log(`Yo! Dazz you're on ${process.env.PORT}`);
+
+  // PATCH SECTION
 });

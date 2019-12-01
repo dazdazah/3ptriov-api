@@ -16,10 +16,15 @@ const multer = require("multer");
 const upload = multer({ storage: multer.memoryStorage() });
 
 // GET SECTION
-app.get("/users", require("./controllers/getUser"));
+app.get("/users", require("./controllers/getUsers"));
+app.get("/user/:id", require("./controllers/getUser"));
+
+app.get("/trip/:id", require("./controllers/getTrip"));
+app.get("/trips", require("./controllers/gettrips"));
 
 // POST SECTION
 app.post("/signup", upload.single("file"), require("./controllers/Signup"));
+app.post("/posttrip", upload.single("file"), require("./controllers/PostTrip"));
 
 app.listen(process.env.PORT, () => {
   console.log(`Yo! Dazz you're on ${process.env.PORT}`);

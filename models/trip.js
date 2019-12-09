@@ -12,6 +12,21 @@ const Trip = mongoose.model("trip", {
   picture: {
     type: String,
     required: [true, "picture is required"]
+  },
+  dates: {
+    type: Date,
+    default: Date.now,
+    required: true
+  },
+  users: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users"
+    }
+  ],
+  leader: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "users"
   }
 });
 

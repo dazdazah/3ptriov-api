@@ -7,7 +7,6 @@ const dataUri = new DataUri();
 const cloudinary = require("cloudinary");
 
 module.exports = (req, res) => {
-  console.log("req.file", req.file);
   let uri = dataUri.format(
     path.extname(req.file.originalname).toString(),
     req.file.buffer
@@ -32,7 +31,6 @@ module.exports = (req, res) => {
 
       Users.create(req.body)
         .then(data => {
-          console.log({ data });
           let token = jwt.sign(data.toObject(), process.env.SECRET);
           res.send(token);
         })

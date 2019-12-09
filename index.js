@@ -21,7 +21,7 @@ app.get("/user/:id", require("./controllers/getUser"));
 app.get("/me", require("./controllers/getMe"));
 
 app.get("/trip/:id", require("./controllers/getTrip"));
-app.get("/trips", require("./controllers/gettrips"));
+app.get("/trips", require("./controllers/getTrips"));
 
 // POST SECTION
 app.post("/signup", upload.single("file"), require("./controllers/Signup"));

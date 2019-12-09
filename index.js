@@ -28,6 +28,9 @@ app.post("/signup", upload.single("file"), require("./controllers/Signup"));
 app.post("/posttrip", upload.single("file"), require("./controllers/PostTrip"));
 app.post("/login", require("./controllers/Login.js"));
 
+//PATCH SECTION
+app.patch("/trip/:id", require("./controllers/patchTrip"));
+
 app.listen(process.env.PORT, () => {
   console.log(`Yo! Dazz you're on ${process.env.PORT}`);
 

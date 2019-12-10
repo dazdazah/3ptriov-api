@@ -20,7 +20,12 @@ module.exports = (req, res) => {
                 Trip.findByIdAndUpdate(req.params.id, tripOriginal, {
                   new: true
                 }).then(tripUpdated => {
-                  console.log({ tripUpdated });
+                  Trip.findById(tripUpdated._id)
+                    .populate("users")
+                    .then(t => {
+                      console.log({ t });
+                      res.send(t);
+                    });
                 });
                 //Work till here 4
               } else {

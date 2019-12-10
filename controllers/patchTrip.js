@@ -6,7 +6,7 @@ module.exports = (req, res) => {
   jwt.verify(token, process.env.SECRET, (err, decoded) => {
     if (decoded) {
       Trip.findById(req.params.id).then(tripOriginal => {
-        if (tripOriginal.users.length <= 3) {
+        if (tripOriginal.users.length < 3) {
           //Working till here 1
           if (tripOriginal.users[0]) {
             //Working till here 2
